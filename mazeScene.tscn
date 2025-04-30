@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://diakmjaaqy1i2"]
+
+[ext_resource type="Script" uid="uid://xiqxh0s1alhi" path="res://maze_scene.gd" id="1_cafpc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_af3cb"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7dh4"]
+size = Vector3(20, 1, 20)
+
+[node name="maze scene" type="Node3D"]
+script = ExtResource("1_cafpc")
+
+[node name="playerCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.99983, -0.0184296, 0, 0.0184296, 0.99983, 0, 0, 0, 1, 0, 0.620325, 1.44625)
+fov = 62.1854
+
+[node name="SunLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35565, 4.18258, 0.413982)
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+mesh = SubResource("BoxMesh_af3cb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("BoxShape3D_u7dh4")
