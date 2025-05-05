@@ -1,27 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://diakmjaaqy1i2"]
+[gd_scene load_steps=7 format=3 uid="uid://diakmjaaqy1i2"]
 
 [ext_resource type="Script" uid="uid://xiqxh0s1alhi" path="res://maze_scene.gd" id="1_cafpc"]
+[ext_resource type="Script" uid="uid://o0e5x4lglivi" path="res://Scripts/follow_camera.gd" id="2_af3cb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_af3cb"]
-size = Vector3(20, 1, 20)
+size = Vector3(50, 1, 50)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_u7dh4"]
-size = Vector3(20, 1, 20)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cafpc"]
+sky_top_color = Color(0.360784, 0.65098, 0.878431, 1)
+sky_horizon_color = Color(0.529412, 0.807843, 0.921569, 1)
+sky_energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_af3cb"]
+sky_material = SubResource("ProceduralSkyMaterial_cafpc")
+radiance_size = 5
+
+[sub_resource type="Environment" id="Environment_u7dh4"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_af3cb")
+ambient_light_source = 3
+ambient_light_color = Color(0.173339, 0.490045, 0.720748, 1)
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 1.5
 
 [node name="maze scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84686, -16.8705, 13.7474)
 script = ExtResource("1_cafpc")
 
 [node name="playerCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.99983, -0.0184296, 0, 0.0184296, 0.99983, 0, 0, 0, 1, 0, 0.620325, 1.44625)
+transform = Transform3D(0.999946, -0.0103481, -0.00105315, 0.00800811, 0.701284, 0.712837, -0.00663795, -0.712807, 0.701329, 1.05297, 11.125, 16.5696)
 fov = 62.1854
 
 [node name="SunLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35565, 4.18258, 0.413982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35565, 266.391, -3.70631)
 
 [node name="floor" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(0.999928, 0, 0.0119901, 0, 1, 0, -0.0119901, 0, 0.999928, -11.9051, -16.8324, -0.787967)
 mesh = SubResource("BoxMesh_af3cb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
-shape = SubResource("BoxShape3D_u7dh4")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u7dh4")
+
+[node name="followCamera" type="Camera3D" parent="."]
+script = ExtResource("2_af3cb")

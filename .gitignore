@@ -1,3 +1,17 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
+# Godot-specific ignores
+.import/
+.export/
+*.godot/
+*.mono/
+
+# Exported binaries (you can keep these locally, but avoid uploading large files)
+*.exe
+*.pck
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*.tmp
+*.bak

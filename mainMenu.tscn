@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4rre5bmks1uc"]
+
+[ext_resource type="Script" uid="uid://ctixbam0jaqil" path="res://Scripts/main_menu.gd" id="1_wut1r"]
+
+[sub_resource type="FontVariation" id="FontVariation_83s16"]
+
+[node name="mainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wut1r")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 86.0
+offset_right = 1148.0
+offset_bottom = 115.0
+tooltip_text = "
+"
+theme_override_fonts/font = SubResource("FontVariation_83s16")
+text = "my maze game"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 373.0
+offset_right = 709.0
+offset_bottom = 452.0
+text = "START GAME
+"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
